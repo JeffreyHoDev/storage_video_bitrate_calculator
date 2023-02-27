@@ -7,13 +7,23 @@ import Select from '@mui/material/Select';
 
 import { useState } from 'react'
 
-const MUISelect = ({ options, label })  => {
+const MUISelect = ({ options, label, resolution, channelList, setChannelList, id })  => {
 
 
     const [chosenOption, setChosenOption] = useState(options[0])
 
     const handleChange = (e) => {
-        setChosenOption(e.target.value)
+      let editedChannel = channelList.map((item, index) => {
+        if(index === id-1){
+          let key = label.toLowerCase()
+          item[key] = e.target.value
+          return item
+        }
+        return item
+      })
+      console.log(setChannelList)
+      setChannelList([].concat(editedChannel))
+      setChosenOption(e.target.value)
     }
 
 
@@ -34,6 +44,7 @@ const MUISelect = ({ options, label })  => {
                 })
             }
         </Select>
+        { resolution ? resolution[chosenOption] : null}
       </FormControl>
     </Box>
   );

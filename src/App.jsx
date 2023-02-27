@@ -53,7 +53,7 @@ function App() {
       <MUIButton label="Add Channel" onClickFunc={addChannelHandler}/>
       <div className='main-info-container'>
         <div className='calculator-container'>
-          <MUITable channelList={channelList}/>
+          <MUITable channelList={channelList} setChannelList={setChannelList}/>
         </div>
       </div>
     </div>
