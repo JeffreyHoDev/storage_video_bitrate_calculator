@@ -21,7 +21,6 @@ const MUISelect = ({ options, label, resolution, channelList, setChannelList, id
         }
         return item
       })
-      console.log(setChannelList)
       setChannelList([].concat(editedChannel))
       setChosenOption(e.target.value)
     }

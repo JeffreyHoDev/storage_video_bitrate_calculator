@@ -1,10 +1,11 @@
 import { DataGrid } from '@mui/x-data-grid';
 
-import MUIButton from '../button-mui/mui-button.component'
+import RemoveMUIButton from '../button-mui/remove-mui-button.component'
 import MUISelect from '../select-mui/mui-select.component'
 import MUITextInput from '../text-input-mui/mui-textinput.component'
 
 import { generateArrayRange } from '../../utils/general.util'
+import { sizeCalculator } from '../../utils/sizecalculator.util'
 
 import { useEffect, useState } from 'react'
 
@@ -22,44 +23,30 @@ const resolution = {
   P1080:"1920*1080"
 }
 
-const rate = {
-  QCIF:["512","448","416","384","352","320","288","256"],
-  CIF:["1024","768","640","512","440","350","312","280"],
-  HD1:["1536","1280","1024","768","640","560","500","450"],
-  D1:["2048","1536","1280","1024","900","800","720","640"],
-  WCIF:["1024*1.3","768*1.3","640*1.3","512*1.3","440*1.3","350*1.3","312*1.3","280*1.3"],
-  WHD1:["1536*1.3","1280*1.3","1024*1.3","768*1.3","640*1.3","560*1.3","500*1.3","450*1.3"],
-  WD1:["2048*1.3","1536*1.3","1280*1.3","1024*1.3","900*1.3","800*1.3","720*1.3","640*1.3"],
-  P720:["6144","4800","4128","3456","2784","2112","1440","768"],
-  P960: ["7987.2", "6240", "5366.4", "4492.8", "3619.2", "2745.6", "1872", "998.4"],
-  P1080:["8192","6390","5505","4068","3712","2816","1919","1024"]
-}
-
 const modeArray = ['PAL', 'NTSC']
 
 
-const rows = [
-  { id: 1,channel: 1,  resolution: 'Snow', mode: 'Jon', quality: 35 },
-  { id: 2,channel: 1,  resolution: 'Lannister', mode: 'Cersei', quality: 42 },
-  { id: 3,channel: 1,  resolution: 'Lannister', mode: 'Jaime', quality: 45 },
-  { id: 4,channel: 1,  resolution: 'Stark', mode: 'Arya', quality: 16 },
-  { id: 5,channel: 1,  resolution: 'Targaryen', mode: 'Daenerys', quality: 1 },
-  { id: 6,channel: 1,  resolution: 'Melisandre', mode: null, quality: 150 },
-  { id: 7,channel: 1,  resolution: 'Clifford', mode: 'Ferrara', quality: 44 },
-  { id: 8,channel: 1,  resolution: 'Frances', mode: 'Rossini', quality: 36 },
-  { id: 9,channel: 1,  resolution: 'Roxie', mode: 'Harvey', quality: 65 },
-];
-
-
 const MUITable = ({ channelList, setChannelList }) => {
-
     const [ newRows, setNewRows ] = useState(channelList)
+    const rate = {
+      QCIF:["512","448","416","384","352","320","288","256"],
+      CIF:["1024","768","640","512","440","350","312","280"],
+      HD1:["1536","1280","1024","768","640","560","500","450"],
+      D1:["2048","1536","1280","1024","900","800","720","640"],
+      WCIF:["1024*1.3","768*1.3","640*1.3","512*1.3","440*1.3","350*1.3","312*1.3","280*1.3"],
+      WHD1:["1536*1.3","1280*1.3","1024*1.3","768*1.3","640*1.3","560*1.3","500*1.3","450*1.3"],
+      WD1:["2048*1.3","1536*1.3","1280*1.3","1024*1.3","900*1.3","800*1.3","720*1.3","640*1.3"],
+      P720:["6144","4800","4128","3456","2784","2112","1440","768"],
+      P960: ["7987.2", "6240", "5366.4", "4492.8", "3619.2", "2745.6", "1872", "998.4"],
+      P1080:["8192","6390","5505","4068","3712","2816","1919","1024"]
+    }
 
     const columns = [
       { field: 'channel', headerName: 'Channel', width: 70 },
       { field: 'resolution', 
         headerName: 'Resolution',
         width: 200,
+        description: 'Resolution Quality for the channel video',
         renderCell: (params) => {
           return (
             <>
@@ -88,7 +75,7 @@ const MUITable = ({ channelList, setChannelList }) => {
       {
         field: 'frame',
         headerName: 'Frame (1-30)',
-        description: 'This column has a value getter and is not sortable.',
+        description: 'Frame rate of the video',
         sortable: false,
         width: 160,
         renderCell: (params) => {
@@ -102,7 +89,7 @@ const MUITable = ({ channelList, setChannelList }) => {
         sortable: false,
         width: 160,
         renderCell: (params) => {
-          return <MUITextInput channelList={channelList}/>
+          return <MUITextInput channelList={channelList} id={params.row.id} setChannelList={setChannelList}/>
         }
       },
       {
@@ -112,24 +99,27 @@ const MUITable = ({ channelList, setChannelList }) => {
         sortable: false,
         width: 160,
         valueGetter: (params) => {
-          console.log('params', params)
+          return `${rate[params.row.resolution][params.row.quality-1]}`
         }
       },
       {
         field: 'size',
         headerName: 'Size',
-        description: 'This column has a value getter and is not sortable.',
+        description: 'Data Size based on the selection properties.',
         sortable: false,
         width: 160,
+        valueGetter: (params) => {
+          return sizeCalculator(params.row)
+        }
       },
       {
         field: 'action',
         headerName: 'Action',
-        description: 'Remove channel',
+        description: 'Actions',
         sortable: false,
         width: 160,
         renderCell: (params) => {
-          return <MUIButton channelList={channelList} label="Remove"/>
+          return <RemoveMUIButton id={params.row.id} channelList={channelList} setChannelList={setChannelList}/>
         }
       },
     ];
@@ -142,10 +132,6 @@ const MUITable = ({ channelList, setChannelList }) => {
         })
         setNewRows(rows)
     }, [channelList])
-
-    useEffect(() => {
-        console.log(newRows)
-    }, [newRows])
 
 
   return (
