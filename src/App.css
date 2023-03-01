@@ -2,3 +2,17 @@
   text-align: center;
   position: relative;
 }
+
+.main-info-section {
+  display: flex;
+  width: 90vw;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.calculator-container {
+  display: flex;
+  width: 90vw;
+  justify-content: center;
+  margin: auto;
+}

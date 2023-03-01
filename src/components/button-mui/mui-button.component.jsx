@@ -1,9 +1,9 @@
 import Button from '@mui/material/Button';
 
-const MUIButton = ({ label, onClickFunc }) => {
+const MUIButton = ({ label, onClickFunc, color }) => {
 
     return (
-        <Button variant="contained" onClick={onClickFunc}>{label}</Button>
+        <Button variant="contained" color={color} onClick={onClickFunc}>{label}</Button>
     )
 }
 

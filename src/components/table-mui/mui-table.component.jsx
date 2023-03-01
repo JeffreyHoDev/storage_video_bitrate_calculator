@@ -69,7 +69,7 @@ const MUITable = ({ channelList, setChannelList }) => {
       {
         field: 'quality',
         headerName: 'Quality',
-        type: 'number',
+        description: 'Quality will affect bit rate',
         width: 160,
         renderCell: (params) => {
           return <MUISelect setChannelList={setChannelList} id={params.row.id} channelList={channelList} label="Quality" options={generateArrayRange(1,8,1)}/>
@@ -125,7 +125,7 @@ const MUITable = ({ channelList, setChannelList }) => {
           return (
             <>
               <div className='actions-container'>
-                <MUIModal />
+                <MUIModal row={params.row}/>
                 <RemoveMUIButton id={params.row.id} channelList={channelList} setChannelList={setChannelList}/>
               </div>
             </>
@@ -146,7 +146,7 @@ const MUITable = ({ channelList, setChannelList }) => {
 
 
   return (
-    <div style={{ height: '90vh', width: '100%' }}>
+    <div style={{ height: '85vh', width: '100%' }}>
       <DataGrid
         rows={newRows}
         columns={columns}

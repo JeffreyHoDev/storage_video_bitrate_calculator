@@ -31,11 +31,13 @@ function App() {
 
   return (
     <div className='main-page-container'>
-      <h1>Bit Rate Calculator</h1>
-      <MUIButton label="Add Channel" onClickFunc={addChannelHandler}/>
+      <h3>Bit Rate Calculator</h3>
       <div className='main-info-container'>
+        <div className='main-info-section'>
+          <b>Total Size: {totalSize}</b>
+          <MUIButton color="success" label="Add Channel" onClickFunc={addChannelHandler}/>
+        </div>
         <div className='calculator-container'>
-          {`Total: ${totalSize}`}
           <MUITable channelList={channelList} setChannelList={setChannelList}/>
         </div>
       </div>

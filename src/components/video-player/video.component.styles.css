@@ -1,11 +1,36 @@
 .video-player-container {
     display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-.original-video-container, .clone-video-container {
-    margin: 1.2rem 1.5rem;
+.original-video-container , .clone-video-container {
+    height: 300px;
+    width: 500px;
+    text-align: center;
+}
+
+.info-container {
+    text-align: center;
+    
+}
+
+.original-video-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.canvas-container {
+    position: relative;
+    height: 300px;
+    width: 500px;
+}
+
+.canvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 .button-container {
