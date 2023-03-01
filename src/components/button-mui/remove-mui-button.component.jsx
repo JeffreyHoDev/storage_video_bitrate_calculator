@@ -6,7 +6,7 @@ const RemoveMUIButton = ({ channelList, id, setChannelList }) => {
         setChannelList([].concat(newArray))
     }
     return (
-        <Button variant="contained" onClick={removeFromChannelList}>Remove</Button>
+        <Button variant="contained" color="error" onClick={removeFromChannelList}>Remove</Button>
     )
 }
 

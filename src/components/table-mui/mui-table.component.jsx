@@ -8,6 +8,9 @@ import { generateArrayRange } from '../../utils/general.util'
 import { sizeCalculator } from '../../utils/sizecalculator.util'
 
 import { useEffect, useState } from 'react'
+import MUIModal from '../modal-mui/mui-modal.component';
+
+import './mui-table.component.styles.css'
 
 const resolutionArray = ['QCIF', 'CIF', 'HD1', 'D1', 'WCIF', 'WHD1', 'WD1', 'P720', 'P960', 'P1080']
 const resolution = {
@@ -117,9 +120,17 @@ const MUITable = ({ channelList, setChannelList }) => {
         headerName: 'Action',
         description: 'Actions',
         sortable: false,
-        width: 160,
+        width: 280,
         renderCell: (params) => {
-          return <RemoveMUIButton id={params.row.id} channelList={channelList} setChannelList={setChannelList}/>
+          return (
+            <>
+              <div className='actions-container'>
+                <MUIModal />
+                <RemoveMUIButton id={params.row.id} channelList={channelList} setChannelList={setChannelList}/>
+              </div>
+            </>
+          ) 
+          
         }
       },
     ];

@@ -1,0 +1,14 @@
+.video-player-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.original-video-container, .clone-video-container {
+    margin: 1.2rem 1.5rem;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+}
