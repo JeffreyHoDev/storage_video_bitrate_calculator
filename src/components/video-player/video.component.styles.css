@@ -37,3 +37,48 @@
     display: flex;
     justify-content: center;
 }
+
+
+/* Wall video styling */
+
+.wall-video-player-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: .5rem;
+    padding: .8rem 0;
+    border-radius: 25px;
+    background: #ebebeb;
+    box-shadow:  -41px 41px 82px #cccccc,
+                 41px -41px 82px #f4f4f4;
+
+}
+
+.wall-overall-container {
+    width: 38vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+
+}
+
+.wall-video-container {
+    width: 38vw;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.wall-video-info-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
+
+.remove-wall-video-button {
+    margin-bottom: .5rem;
+}

@@ -29,10 +29,10 @@ const MUISelect = ({ options, label, resolution, channelList, setChannelList, id
   return (
     <Box sx={{ minWidth: 120 }}>
       <FormControl fullWidth>
-        <InputLabel id="demo-simple-select-label">{label}</InputLabel>
+        <InputLabel id="mui-select-label">{label}</InputLabel>
         <Select
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
+          labelId="mui-select-label"
+          id="mui-select"
           value={chosenOption}
           label={label}
           onChange={handleChange}

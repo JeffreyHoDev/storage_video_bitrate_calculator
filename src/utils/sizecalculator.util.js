@@ -59,7 +59,7 @@ export const sizeCalculatorWithoutFormat = (rows) => {
     };
 
     let result = resolutionForCalc * frame * arg * parseInt(duration) * 3600 / 25
-    return result
+    return result*1.2
 }
 
 export const formatSize = (value) => {
