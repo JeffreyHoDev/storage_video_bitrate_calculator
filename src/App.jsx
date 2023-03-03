@@ -53,8 +53,8 @@ function App() {
       </div>
       <div className='right-panel'>
         <div>
-          <h3>Resolution Video Wall</h3>
-          <AddWallVideoMUIModal wallList={wallList} setWallList={setWallList}/>
+          <h3>Mini Resolution Video Wall</h3>
+          <AddWallVideoMUIModal playVideoWall={playVideoWall} wallList={wallList} setWallList={setWallList}/>
           <div className='wall-list'>
             {
               wallList.map((res, index) => {

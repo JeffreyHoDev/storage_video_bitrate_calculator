@@ -6,7 +6,7 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
-const AddWallVideoMUIModal = ({ setWallList, wallList }) => {
+const AddWallVideoMUIModal = ({ setWallList, wallList, playVideoWall }) => {
     const [open, setOpen] = useState(false);
     const [chosenOption, setChosenOption] = useState("1080p")
 
@@ -32,11 +32,15 @@ const AddWallVideoMUIModal = ({ setWallList, wallList }) => {
 
 
     const addVideoToWallList = () => {
-      if(wallList.length === 3){
-        alert("Videos on wall maximum 3. Please remove and insert")
+      if(wallList.length === 2){
+        alert("Videos on wall maximum 2. Please remove and insert")
       }else {
         let clone = wallList
-        clone.push(chosenOption)
+        let obj = {
+          resolution: chosenOption,
+          playing: false
+        }
+        clone.push(obj)
         setWallList([].concat(clone))
         handleToggle()
       }
@@ -44,7 +48,7 @@ const AddWallVideoMUIModal = ({ setWallList, wallList }) => {
 
     return (
         <div>
-          <Button variant='contained' color="primary" onClick={handleToggle}>Add Wall Video</Button>
+          <Button disabled={playVideoWall} variant='contained' color="primary" onClick={handleToggle}>Add Wall Video</Button>
           <Modal
             open={open}
             onClose={handleToggle}
@@ -65,6 +69,7 @@ const AddWallVideoMUIModal = ({ setWallList, wallList }) => {
                   <MenuItem key={`res-1080`} value="1080p">1080p</MenuItem>
                   <MenuItem key={`res-720`} value="720p">720p</MenuItem>
                   <MenuItem key={`res-D1`} value="D1">D1</MenuItem>
+                  <MenuItem key={`res-CIF`} value="CIF">CIF</MenuItem>
                 </Select>
                 <Box sx={{ m: 5}}>
                   <Button variant='contained' color="success" onClick={addVideoToWallList}>Add Wall Video</Button>
