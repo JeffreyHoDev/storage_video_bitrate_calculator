@@ -3,7 +3,7 @@ import './App.css';
 import MUITable from './components/table-mui/mui-table.component'
 import MUIButton from './components/button-mui/mui-button.component';
 import AddWallVideoMUIModal from './components/modal-mui/add-wall-video-mui-modal.component'
-import { Button } from '@mui/material';
+import { Button, Link } from '@mui/material';
 
 import WallVideoPlayer from './components/video-player/wall-video.component'
 import { totalSizeCalculator } from './utils/sizecalculator.util'
@@ -53,8 +53,18 @@ function App() {
       </div>
       <div className='right-panel'>
         <div>
-          <h3>Mini Resolution Video Wall</h3>
+          <h3>Mini Resolution Video Wall ------ <Link href="#"> To Bigger Wall</Link></h3>
           <AddWallVideoMUIModal playVideoWall={playVideoWall} wallList={wallList} setWallList={setWallList}/>
+          <div className='video-container'>
+                  <p style={{textAlign: 'center', fontSize: "12px"}}>Due to limitation of video sources, the video shown might not be similar as what chosen but will replace with video close to selection. Here are the references</p>
+                  <div className='video-info'>
+                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>1080p & 980p use 1080p video</p>
+                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>720p use 720p video</p>
+                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>WD1 & WHD1 use 480p video</p>
+                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>D1 use 360p video</p>
+                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>Others use 240p video</p>
+                  </div>
+                </div>
           <div className='wall-list'>
             {
               wallList.map((res, index) => {

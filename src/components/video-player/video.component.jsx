@@ -78,7 +78,7 @@ const VideoPlayer = ({ interval, setFrameInterval, row, playing, setPlaying }) =
                     <div className='original-video-container'>
                         <div className='original-unit-video' ref={unitVideoContainer}>
                             <video className='original-video' ref={video} onEnded={handleOnEnded} muted="muted">
-                                <source src={require(`../../assets/${sourceVideoToChose}-day-rain.mp4`)} type="video/mp4"/>
+                                <source src={require(`../../assets/${sourceVideoToChose}-day-normal.mp4`)} type="video/mp4"/>
                             </video>
                         </div>
                     </div>
