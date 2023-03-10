@@ -146,7 +146,7 @@ const MUITable = ({ channelList, setChannelList }) => {
 
 
   return (
-    <div style={{ height: '85vh', width: '100%' }}>
+    <div style={{ height: '85vh', width: '100%', boxShadow: "0px 2px 2px #333333" }}>
       <DataGrid
         rows={newRows}
         columns={columns}

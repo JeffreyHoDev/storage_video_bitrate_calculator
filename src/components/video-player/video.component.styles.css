@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt&display=swap');
+
 .video-player-container {
     display: flex;
 }
@@ -78,7 +80,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: .5rem;
     padding: .8rem 0;
     /* border-radius: 25px;
     background: #ebebeb;
@@ -117,6 +118,11 @@
 .unit {
     width: 80%;
     margin: .5rem;
+    padding: .1rem .2rem;
+    font-family: 'Prompt', sans-serif;
+    color: rgb(0, 0, 0);
+    background-color: rgb(228, 228, 228);
+    box-shadow: 1px 2px 5px #333333
 }
 
 .unit-video-container {

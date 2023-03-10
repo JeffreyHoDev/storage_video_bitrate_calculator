@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Button } from '@mui/material'
 
 import './video.component.styles.css'
-const WallVideoPlayer = ({ playVideoWall, setPlayVideoWall, resolution, wallList, setWallList, index }) => {
+const WallVideoPlayer = ({ playVideoWall, setPlayVideoWall, resolution, wallList, setWallList, index, setCountPlayedFinish, countPlayedFinish  }) => {
 
     let dayRef = useRef(undefined)
     let nightRef = useRef(undefined)
@@ -31,7 +31,7 @@ const WallVideoPlayer = ({ playVideoWall, setPlayVideoWall, resolution, wallList
     }
 
     const onHandleEnd = () => {
-        setPlayVideoWall(!playVideoWall)
+        setCountPlayedFinish(prev => prev + 1)
     }
 
 

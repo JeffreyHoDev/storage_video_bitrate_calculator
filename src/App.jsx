@@ -8,7 +8,7 @@ import { Button, Link } from '@mui/material';
 import WallVideoPlayer from './components/video-player/wall-video.component'
 import { totalSizeCalculator } from './utils/sizecalculator.util'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 
 
@@ -17,6 +17,7 @@ function App() {
   const [ channelList, setChannelList ] = useState([])
   const [ wallList, setWallList ] = useState([])
   const [ playVideoWall, setPlayVideoWall ] = useState(false)
+  const [ countPlayedFinish, setCountPlayedFinish ] = useState(wallList.length)
 
   const addChannelHandler = () => {
     let object = {
@@ -31,6 +32,21 @@ function App() {
 
     setChannelList([].concat(cloneArray))
 
+  }
+
+  useEffect(() => {
+    let totalVideos = wallList.length * 2
+    console.log('count', countPlayedFinish)
+    console.log('totalvideos', totalVideos)
+    if(countPlayedFinish === totalVideos){
+      console.log("resetting")
+      resetHandler()
+    }
+  }, [countPlayedFinish])
+
+  const resetHandler = () => {
+    setPlayVideoWall(false)
+    setCountPlayedFinish(0)
   }
 
 
@@ -58,17 +74,17 @@ function App() {
           <div className='video-container'>
                   <p style={{textAlign: 'center', fontSize: "12px"}}>Due to limitation of video sources, the video shown might not be similar as what chosen but will replace with video close to selection. Here are the references</p>
                   <div className='video-info'>
-                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>1080p & 980p use 1080p video</p>
-                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>720p use 720p video</p>
-                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>WD1 & WHD1 use 480p video</p>
-                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>D1 use 360p video</p>
-                    <p style={{fontSize: "12px", margin: "0 .2rem"}}>Others use 240p video</p>
+                    <p style={{fontSize: "12px", margin: "0 .2rem", textDecoration: "underline"}}>1080p & 980p use 1080p video</p>
+                    <p style={{fontSize: "12px", margin: "0 .2rem", textDecoration: "underline"}}>720p use 720p video</p>
+                    <p style={{fontSize: "12px", margin: "0 .2rem", textDecoration: "underline"}}>WD1 & WHD1 use 480p video</p>
+                    <p style={{fontSize: "12px", margin: "0 .2rem", textDecoration: "underline"}}>D1 use 360p video</p>
+                    <p style={{fontSize: "12px", margin: "0 .2rem", textDecoration: "underline"}}>Others use 240p video</p>
                   </div>
                 </div>
           <div className='wall-list'>
             {
               wallList.map((res, index) => {
-                return <WallVideoPlayer index={index} wallList={wallList} setWallList={setWallList} key={`wall-video-${index}`} resolution={res} playVideoWall={playVideoWall} setPlayVideoWall={setPlayVideoWall} />
+                return <WallVideoPlayer setCountPlayedFinish={setCountPlayedFinish} countPlayedFinish={countPlayedFinish} index={index} wallList={wallList} setWallList={setWallList} key={`wall-video-${index}`} resolution={res} playVideoWall={playVideoWall} setPlayVideoWall={setPlayVideoWall} />
               })
             }
           </div>
