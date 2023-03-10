@@ -69,7 +69,7 @@ function App() {
       </div>
       <div className='right-panel'>
         <div>
-          <h3>Mini Resolution Video Wall ------ <Link href="#"> To Bigger Wall</Link></h3>
+          <h3>Mini Resolution Video Wall ------ <Link href="https://jeffreyhodev.github.io/video_resolution_comparison_wall"> To Bigger Wall</Link></h3>
           <AddWallVideoMUIModal playVideoWall={playVideoWall} wallList={wallList} setWallList={setWallList}/>
           <div className='video-container'>
                   <p style={{textAlign: 'center', fontSize: "12px"}}>Due to limitation of video sources, the video shown might not be similar as what chosen but will replace with video close to selection. Here are the references</p>
