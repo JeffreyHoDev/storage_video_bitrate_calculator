@@ -1,25 +1,25 @@
 {
   "files": {
-    "main.css": "/bitrate_calculator/static/css/main.4e6464c9.css",
-    "main.js": "/bitrate_calculator/static/js/main.81729098.js",
-    "static/js/787.02c83c87.chunk.js": "/bitrate_calculator/static/js/787.02c83c87.chunk.js",
-    "static/media/1080p-day-normal.mp4": "/bitrate_calculator/static/media/1080p-day-normal.67c80bcf8211eb4634d8.mp4",
-    "static/media/720p-day-normal.mp4": "/bitrate_calculator/static/media/720p-day-normal.1342a57fcb1b62aa38b5.mp4",
-    "static/media/1080p-night-normal.mp4": "/bitrate_calculator/static/media/1080p-night-normal.0c4d0bcece018ee0fe72.mp4",
-    "static/media/480p-day-normal.mp4": "/bitrate_calculator/static/media/480p-day-normal.dbb96bc4fbe6142533d7.mp4",
-    "static/media/360p-day-normal.mp4": "/bitrate_calculator/static/media/360p-day-normal.c8b56cc3332bf2f1efda.mp4",
-    "static/media/720p-night-normal.mp4": "/bitrate_calculator/static/media/720p-night-normal.7f8f58138c0f5bcc1a48.mp4",
-    "static/media/480p-night-normal.mp4": "/bitrate_calculator/static/media/480p-night-normal.efe57a3db4a32dc1123c.mp4",
-    "static/media/360p-night-normal.mp4": "/bitrate_calculator/static/media/360p-night-normal.80d17017cb1d82ad4f9a.mp4",
-    "static/media/240p-day-normal.mp4": "/bitrate_calculator/static/media/240p-day-normal.a4bf1617b9e396203a19.mp4",
-    "static/media/240p-night-normal.mp4": "/bitrate_calculator/static/media/240p-night-normal.d33b47fee4a109569edf.mp4",
-    "index.html": "/bitrate_calculator/index.html",
-    "main.4e6464c9.css.map": "/bitrate_calculator/static/css/main.4e6464c9.css.map",
-    "main.81729098.js.map": "/bitrate_calculator/static/js/main.81729098.js.map",
-    "787.02c83c87.chunk.js.map": "/bitrate_calculator/static/js/787.02c83c87.chunk.js.map"
+    "main.css": "/storage_video_bitrate_calculator/static/css/main.4e6464c9.css",
+    "main.js": "/storage_video_bitrate_calculator/static/js/main.8826e972.js",
+    "static/js/787.02c83c87.chunk.js": "/storage_video_bitrate_calculator/static/js/787.02c83c87.chunk.js",
+    "static/media/1080p-day-normal.mp4": "/storage_video_bitrate_calculator/static/media/1080p-day-normal.67c80bcf8211eb4634d8.mp4",
+    "static/media/720p-day-normal.mp4": "/storage_video_bitrate_calculator/static/media/720p-day-normal.1342a57fcb1b62aa38b5.mp4",
+    "static/media/1080p-night-normal.mp4": "/storage_video_bitrate_calculator/static/media/1080p-night-normal.0c4d0bcece018ee0fe72.mp4",
+    "static/media/480p-day-normal.mp4": "/storage_video_bitrate_calculator/static/media/480p-day-normal.dbb96bc4fbe6142533d7.mp4",
+    "static/media/360p-day-normal.mp4": "/storage_video_bitrate_calculator/static/media/360p-day-normal.c8b56cc3332bf2f1efda.mp4",
+    "static/media/720p-night-normal.mp4": "/storage_video_bitrate_calculator/static/media/720p-night-normal.7f8f58138c0f5bcc1a48.mp4",
+    "static/media/480p-night-normal.mp4": "/storage_video_bitrate_calculator/static/media/480p-night-normal.efe57a3db4a32dc1123c.mp4",
+    "static/media/360p-night-normal.mp4": "/storage_video_bitrate_calculator/static/media/360p-night-normal.80d17017cb1d82ad4f9a.mp4",
+    "static/media/240p-day-normal.mp4": "/storage_video_bitrate_calculator/static/media/240p-day-normal.a4bf1617b9e396203a19.mp4",
+    "static/media/240p-night-normal.mp4": "/storage_video_bitrate_calculator/static/media/240p-night-normal.d33b47fee4a109569edf.mp4",
+    "index.html": "/storage_video_bitrate_calculator/index.html",
+    "main.4e6464c9.css.map": "/storage_video_bitrate_calculator/static/css/main.4e6464c9.css.map",
+    "main.8826e972.js.map": "/storage_video_bitrate_calculator/static/js/main.8826e972.js.map",
+    "787.02c83c87.chunk.js.map": "/storage_video_bitrate_calculator/static/js/787.02c83c87.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4e6464c9.css",
-    "static/js/main.81729098.js"
+    "static/js/main.8826e972.js"
   ]
 }
