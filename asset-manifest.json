@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/storage_video_bitrate_calculator/static/css/main.4e6464c9.css",
-    "main.js": "/storage_video_bitrate_calculator/static/js/main.8826e972.js",
+    "main.js": "/storage_video_bitrate_calculator/static/js/main.aa12b2cb.js",
     "static/js/787.02c83c87.chunk.js": "/storage_video_bitrate_calculator/static/js/787.02c83c87.chunk.js",
     "static/media/1080p-day-normal.mp4": "/storage_video_bitrate_calculator/static/media/1080p-day-normal.67c80bcf8211eb4634d8.mp4",
     "static/media/720p-day-normal.mp4": "/storage_video_bitrate_calculator/static/media/720p-day-normal.1342a57fcb1b62aa38b5.mp4",
@@ -15,11 +15,11 @@
     "static/media/240p-night-normal.mp4": "/storage_video_bitrate_calculator/static/media/240p-night-normal.d33b47fee4a109569edf.mp4",
     "index.html": "/storage_video_bitrate_calculator/index.html",
     "main.4e6464c9.css.map": "/storage_video_bitrate_calculator/static/css/main.4e6464c9.css.map",
-    "main.8826e972.js.map": "/storage_video_bitrate_calculator/static/js/main.8826e972.js.map",
+    "main.aa12b2cb.js.map": "/storage_video_bitrate_calculator/static/js/main.aa12b2cb.js.map",
     "787.02c83c87.chunk.js.map": "/storage_video_bitrate_calculator/static/js/787.02c83c87.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4e6464c9.css",
-    "static/js/main.8826e972.js"
+    "static/js/main.aa12b2cb.js"
   ]
 }
