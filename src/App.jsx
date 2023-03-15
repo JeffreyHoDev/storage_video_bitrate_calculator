@@ -10,14 +10,19 @@ import { totalSizeCalculator } from './utils/sizecalculator.util'
 
 import { useEffect, useState } from 'react'
 
+import { useDispatch, useSelector } from 'react-redux';
 
+import { toogleVideoWall, pauseVideoWall } from './redux/video-wall/video-wall.action'
+import { getVideoWallStatus } from './redux/video-wall/video-wall.selector'
 
 function App() {
-  
   const [ channelList, setChannelList ] = useState([])
   const [ wallList, setWallList ] = useState([])
-  const [ playVideoWall, setPlayVideoWall ] = useState(false)
+  
   const [ countPlayedFinish, setCountPlayedFinish ] = useState(wallList.length)
+  
+  const dispatch = useDispatch()
+  const { playVideoWall } = useSelector(getVideoWallStatus)
 
   const addChannelHandler = () => {
     let object = {
@@ -36,16 +41,14 @@ function App() {
 
   useEffect(() => {
     let totalVideos = wallList.length * 2
-    console.log('count', countPlayedFinish)
-    console.log('totalvideos', totalVideos)
-    if(countPlayedFinish === totalVideos){
-      console.log("resetting")
+    if(countPlayedFinish === totalVideos && countPlayedFinish !== 0){
       resetHandler()
     }
   }, [countPlayedFinish])
 
   const resetHandler = () => {
-    setPlayVideoWall(false)
+    console.log("resetting")
+    dispatch(pauseVideoWall())
     setCountPlayedFinish(0)
   }
 
@@ -70,7 +73,7 @@ function App() {
       <div className='right-panel'>
         <div>
           <h3>Mini Resolution Video Wall ------ <Link href="https://jeffreyhodev.github.io/video_resolution_comparison_wall"> To Bigger Wall</Link></h3>
-          <AddWallVideoMUIModal playVideoWall={playVideoWall} wallList={wallList} setWallList={setWallList}/>
+          <AddWallVideoMUIModal wallList={wallList} setWallList={setWallList}/>
           <div className='video-container'>
                   <p style={{textAlign: 'center', fontSize: "12px"}}>Due to limitation of video sources, the video shown might not be similar as what chosen but will replace with video close to selection. Here are the references</p>
                   <div className='video-info'>
@@ -84,12 +87,12 @@ function App() {
           <div className='wall-list'>
             {
               wallList.map((res, index) => {
-                return <WallVideoPlayer setCountPlayedFinish={setCountPlayedFinish} countPlayedFinish={countPlayedFinish} index={index} wallList={wallList} setWallList={setWallList} key={`wall-video-${index}`} resolution={res} playVideoWall={playVideoWall} setPlayVideoWall={setPlayVideoWall} />
+                return <WallVideoPlayer setCountPlayedFinish={setCountPlayedFinish} countPlayedFinish={countPlayedFinish} index={index} wallList={wallList} setWallList={setWallList} key={`wall-video-${index}`} resolution={res} />
               })
             }
           </div>
         </div>
-        <Button variant="contained" color={playVideoWall ? "error" : "success"} onClick={() => setPlayVideoWall(!playVideoWall)}>{playVideoWall ? "Pause Video Wall" : "Play Video Wall" }</Button>
+        <Button variant="contained" color={playVideoWall ? "error" : "success"} onClick={() => dispatch(toogleVideoWall())}>{playVideoWall ? "Pause Video Wall" : "Play Video Wall" }</Button>
       </div>
     </div>
   );

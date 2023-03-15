@@ -2,10 +2,17 @@ import { useEffect, useRef } from 'react'
 import { Button } from '@mui/material'
 
 import './video.component.styles.css'
-const WallVideoPlayer = ({ playVideoWall, setPlayVideoWall, resolution, wallList, setWallList, index, setCountPlayedFinish, countPlayedFinish  }) => {
+
+import { useSelector } from 'react-redux'
+import { getVideoWallStatus } from '../../redux/video-wall/video-wall.selector'
+
+const WallVideoPlayer = ({ resolution, wallList, setWallList, index, setCountPlayedFinish  }) => {
 
     let dayRef = useRef(undefined)
     let nightRef = useRef(undefined)
+
+    const { playVideoWall } = useSelector(getVideoWallStatus)
+
     useEffect(() => {
         if(playVideoWall){
             dayRef.current.play()

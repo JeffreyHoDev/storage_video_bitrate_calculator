@@ -1,0 +1,1 @@
+export const getVideoWallStatus = (state) => state.videoWall

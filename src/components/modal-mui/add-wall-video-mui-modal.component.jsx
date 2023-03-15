@@ -6,9 +6,14 @@ import InputLabel from '@mui/material/InputLabel';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
-const AddWallVideoMUIModal = ({ setWallList, wallList, playVideoWall }) => {
+import { useSelector } from 'react-redux';
+import { getVideoWallStatus } from '../../redux/video-wall/video-wall.selector'
+
+const AddWallVideoMUIModal = ({ setWallList, wallList }) => {
     const [open, setOpen] = useState(false);
     const [chosenOption, setChosenOption] = useState("1080p")
+
+    const { playVideoWall } = useSelector(getVideoWallStatus)
 
     const handleToggle = () => {
       setOpen(!open);
