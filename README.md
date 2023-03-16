@@ -16,6 +16,7 @@ Furthermore, user can also view the sample with frame selected to see and feel t
 
 ## Future Plan
 1. Add the save button for user to save configurations to local storage, improve user experience
+2. Sharing features via email
 
 ## Date
 10th March 2023
