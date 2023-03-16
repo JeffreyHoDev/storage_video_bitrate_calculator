@@ -3,6 +3,8 @@ import './App.css';
 import MUITable from './components/table-mui/mui-table.component'
 import MUIButton from './components/button-mui/mui-button.component';
 import AddWallVideoMUIModal from './components/modal-mui/add-wall-video-mui-modal.component'
+import LocalStorageModal from './components/modal-mui/local-storage-modal'
+import SaveLocalStorageModal from './components/modal-mui/save-local-storage-modal'
 import { Button, Link } from '@mui/material';
 
 import WallVideoPlayer from './components/video-player/wall-video.component'
@@ -11,13 +13,13 @@ import { totalSizeCalculator } from './utils/sizecalculator.util'
 import { useEffect, useState } from 'react'
 
 
-
 function App() {
   
   const [ channelList, setChannelList ] = useState([])
   const [ wallList, setWallList ] = useState([])
   const [ playVideoWall, setPlayVideoWall ] = useState(false)
   const [ countPlayedFinish, setCountPlayedFinish ] = useState(wallList.length)
+  const [ fromLocalStorage, setLocalStorage ] = useState([])
 
   const addChannelHandler = () => {
     let object = {
@@ -35,11 +37,17 @@ function App() {
   }
 
   useEffect(() => {
+    const items = JSON.parse(localStorage.getItem('items'));
+    if(!items){
+      setLocalStorage([])
+    }else {
+      setLocalStorage([].concat(items))
+    }
+  }, [])
+
+  useEffect(() => {
     let totalVideos = wallList.length * 2
-    console.log('count', countPlayedFinish)
-    console.log('totalvideos', totalVideos)
     if(countPlayedFinish === totalVideos){
-      console.log("resetting")
       resetHandler()
     }
   }, [countPlayedFinish])
@@ -60,11 +68,13 @@ function App() {
         <div className='main-info-container'>
           <div className='main-info-section'>
             <b>Total Size: {totalSize}</b>
+            <LocalStorageModal />
             <MUIButton color="success" label="Add Channel" onClickFunc={addChannelHandler}/>
           </div>
           <div className='calculator-container'>
             <MUITable channelList={channelList} setChannelList={setChannelList}/>
           </div>
+          <SaveLocalStorageModal setLocalStorage={setLocalStorage} localStorage={localStorage}/>
         </div>
       </div>
       <div className='right-panel'>
