@@ -5,25 +5,29 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const MUISelect = ({ options, label, resolution, channelList, setChannelList, id })  => {
 
-
-    const [chosenOption, setChosenOption] = useState(options[0])
-
-    const handleChange = (e) => {
-      let editedChannel = channelList.map((item, index) => {
-        if(index === id-1){
-          let key = label.toLowerCase()
-          item[key] = e.target.value
-          return item
-        }
+  const [chosenOption, setChosenOption] = useState(options[0])
+  
+  const handleChange = (e) => {
+    let editedChannel = channelList.map((item, index) => {
+      if(index === id-1){
+        let key = label.toLowerCase()
+        item[key] = e.target.value
         return item
-      })
-      setChannelList([].concat(editedChannel))
-      setChosenOption(e.target.value)
-    }
+      }
+      return item
+    })
+    setChannelList([].concat(editedChannel))
+    setChosenOption(e.target.value)
+  }
+  
+  // If Channellist got something (From applying local storage), use the value, else default show first option
+    useEffect(() => {
+      setChosenOption(prev => channelList.length > 0 ? channelList[id-1][label.toLowerCase()] : options[0] )
+    }, [channelList])
 
 
   return (
