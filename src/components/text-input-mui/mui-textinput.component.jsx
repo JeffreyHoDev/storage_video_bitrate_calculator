@@ -1,10 +1,14 @@
 import TextField from '@mui/material/TextField';
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const MUITextInput = ({ channelList, setChannelList, id }) => {
 
     const [hours, setHours] = useState(0)
+
+    useEffect(() => {
+        setHours(prev => channelList.length > 0 ? channelList[id-1]["duration"] : 0)
+    },[channelList])
 
     const durationInputHandler = (e) => {
         if(e.target.value < 0){

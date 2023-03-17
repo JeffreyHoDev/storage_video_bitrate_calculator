@@ -37,6 +37,10 @@
     width: 30vw;
 }
 
+.local-storage-action-container {
+    display: flex;
+}
+
 .list-item-container {
     display: flex;
     width: 100%;

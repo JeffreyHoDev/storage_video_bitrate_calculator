@@ -6,18 +6,47 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
-import DeleteIcon from '@mui/icons-material/Delete';
 import Avatar from '@mui/material/Avatar';
 
-import { useState } from 'react'
+import DeleteForeverTwoToneIcon from '@mui/icons-material/DeleteForeverTwoTone';
+
+import { useEffect, useState } from 'react'
 import './mui-modal.component.styles.css'
 
-const LocalStorageModal = () => {
+const LocalStorageModal = ({ setChannelList, setStorageLength, storageLength }) => {
     const [open, setOpen] = useState(false);
+    const [ dataFromLocalStorage, setDataFromLocalStorage ] = useState([])
+    
 
     const handleToggle = () => {
       setOpen(!open);
     }
+
+    useEffect(() => {
+      let existingStorage = JSON.parse(localStorage.getItem('PJakvvAbksa2AHM*.9mo'))
+      if(existingStorage){
+        setDataFromLocalStorage([].concat(existingStorage))
+        setStorageLength(existingStorage.length)
+      }
+    },[open])
+
+
+    const selectConfigurations = (index) => {
+      // Index of the localStorage
+      let requiredSet = dataFromLocalStorage[index].data
+      setChannelList(prev => [])
+      setChannelList(prev => [].concat(requiredSet))
+      setOpen(false)
+    }
+
+    const removeFromLocalStorage = (indexToBeRemoved) => {
+      let newSet = dataFromLocalStorage.filter((item, index) => {
+        return index !== indexToBeRemoved
+      })
+      localStorage.setItem('PJakvvAbksa2AHM*.9mo', JSON.stringify(newSet))
+      setDataFromLocalStorage([].concat(newSet))
+      setStorageLength(prev => prev-1)
+    } 
 
     const style = {
       position: 'absolute',
@@ -30,9 +59,26 @@ const LocalStorageModal = () => {
       p: 5
     };
 
+        /*
+      Local Storage Structure:
+        [
+          {
+            "name": String,
+            "data": [] This will represent the channel list
+          },
+          {
+            "name": String,
+            "data": []
+          }
+        ]
+    */
+
     return (
         <div>
-          <Button variant='contained' color="primary" onClick={handleToggle}>Apply Saved Configurations</Button>
+          <div className='local-storage-action-container'>
+            <Button variant='contained' color="secondary" style={{marginRight: "1rem"}} onClick={handleToggle}>Apply Saved Configurations</Button>
+            <p>You have {storageLength} templates saved</p>
+          </div>
           <Modal
             open={open}
             aria-labelledby="modal-modal-title"
@@ -42,21 +88,28 @@ const LocalStorageModal = () => {
               <div className='local-storage-container'>
                 <Button variant='contained' color="error" onClick={handleToggle}>Close</Button>
                 <h3>Saved Configurations</h3>
+                <p>Click on one of the saved template to apply the configurations</p>
                 <Box sx={{ width: '100%', bgcolor: 'background.paper' }}>
                     <List>
-                      <ListItem>
-                        <div className='list-item-container'>
-                          <ListItemButton>
-                            <ListItemText primary="1" />
-                            <ListItemText primary="Name 1" />
-                          </ListItemButton>
-                          <ListItemAvatar>
-                            <Avatar>
-                              <DeleteIcon />
-                            </Avatar>
-                          </ListItemAvatar>
-                        </div>
-                      </ListItem>
+                      {
+                        dataFromLocalStorage.map((item, index) => {
+                          return (
+                            <ListItem key={`localstorage-${index}`}>
+                              <div className='list-item-container'>
+                                <ListItemButton onClick={() => selectConfigurations(index)}>
+                                  <ListItemText primary={index} />
+                                  <ListItemText primary={item.name} />
+                                </ListItemButton>
+                                <ListItemAvatar>
+                                  <Avatar>
+                                    <DeleteForeverTwoToneIcon style={{cursor: "pointer"}} color="error" onClick={() => removeFromLocalStorage(index)}/>
+                                  </Avatar>
+                                </ListItemAvatar>
+                              </div>
+                            </ListItem>
+                          )
+                        })
+                      }
                     </List>
                 </Box>
               </div>

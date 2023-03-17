@@ -19,7 +19,7 @@ function App() {
   const [ wallList, setWallList ] = useState([])
   const [ playVideoWall, setPlayVideoWall ] = useState(false)
   const [ countPlayedFinish, setCountPlayedFinish ] = useState(wallList.length)
-  const [ fromLocalStorage, setLocalStorage ] = useState([])
+  const [ storageLength, setStorageLength ] = useState(0)
 
   const addChannelHandler = () => {
     let object = {
@@ -35,15 +35,6 @@ function App() {
     setChannelList([].concat(cloneArray))
 
   }
-
-  useEffect(() => {
-    const items = JSON.parse(localStorage.getItem('items'));
-    if(!items){
-      setLocalStorage([])
-    }else {
-      setLocalStorage([].concat(items))
-    }
-  }, [])
 
   useEffect(() => {
     let totalVideos = wallList.length * 2
@@ -68,13 +59,13 @@ function App() {
         <div className='main-info-container'>
           <div className='main-info-section'>
             <b>Total Size: {totalSize}</b>
-            <LocalStorageModal />
-            <MUIButton color="success" label="Add Channel" onClickFunc={addChannelHandler}/>
+            <LocalStorageModal channelList={channelList} setChannelList={setChannelList} storageLength={storageLength} setStorageLength={setStorageLength} />
+            <MUIButton color="primary" label="Add Channel" onClickFunc={addChannelHandler}/>
           </div>
           <div className='calculator-container'>
             <MUITable channelList={channelList} setChannelList={setChannelList}/>
           </div>
-          <SaveLocalStorageModal setLocalStorage={setLocalStorage} localStorage={localStorage}/>
+          <SaveLocalStorageModal channelList={channelList} setStorageLength={setStorageLength} />
         </div>
       </div>
       <div className='right-panel'>

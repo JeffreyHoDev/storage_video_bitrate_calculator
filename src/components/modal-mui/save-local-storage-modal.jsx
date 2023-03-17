@@ -7,12 +7,47 @@ import { useState } from 'react'
 
 import './mui-modal.component.styles.css'
 
-const SaveLocalStorageModal = ({ localStorage, setLocalStorage }) => {
+const SaveLocalStorageModal = ({ channelList, setStorageLength }) => {
     const [open, setOpen] = useState(false);
+    const [ templateName, setTemplateName ] = useState("")
 
     const handleToggle = () => {
       setOpen(!open);
     }
+
+    const handleSaveLocalStorage = () => {
+      let currentLocal = JSON.parse(localStorage.getItem('PJakvvAbksa2AHM*.9mo'))
+      if(!currentLocal){ // If first time
+        currentLocal = []
+      }
+      if(channelList.length === 0){
+        alert("Please have at least one channel configuration")
+      }else {
+        let objectToBeAdd = {
+          "name": templateName,
+          "data": channelList
+        }
+        currentLocal.push(objectToBeAdd)
+        localStorage.setItem('PJakvvAbksa2AHM*.9mo', JSON.stringify(currentLocal))
+        alert("Success Save")
+        setStorageLength(prev => prev + 1)
+        setOpen(false)
+      }
+    }
+
+    /*
+      Local Storage Structure:
+        [
+          {
+            "name": String,
+            "data": [] This will represent the channel list
+          },
+          {
+            "name": String,
+            "data": []
+          }
+        ]
+    */
 
     const style = {
       position: 'absolute',
@@ -27,7 +62,7 @@ const SaveLocalStorageModal = ({ localStorage, setLocalStorage }) => {
 
     return (
         <div>
-          <Button variant='contained' color="primary" onClick={handleToggle}>Save Configurations</Button>
+          <Button variant='contained' color="secondary" style={{marginTop: ".5rem"}} onClick={handleToggle}>Save Configurations</Button>
           <Modal
             open={open}
             aria-labelledby="modal-modal-title"
@@ -36,8 +71,8 @@ const SaveLocalStorageModal = ({ localStorage, setLocalStorage }) => {
             <Box sx={style}>
               <div className='save-to-local-storage-container'>
                 <Button variant='contained' color="error" onClick={handleToggle}>Close</Button>
-                <TextField id="save-config-name" label="Name" variant="outlined" />
-                <Button>Save</Button>
+                <TextField onChange={(e) => setTemplateName(e.target.value)} id="save-config-name" label="Name" variant="outlined" />
+                <Button variant='contained' color="success" onClick={handleSaveLocalStorage}>Save</Button>
               </div>
             </Box>
           </Modal>
