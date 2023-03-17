@@ -152,8 +152,9 @@ const MUITable = ({ channelList, setChannelList }) => {
       <DataGrid
         rows={newRows}
         columns={newColumns}
-        pageSize={20}
+        pageSize={10}
         rowHeight={100}
+        rowsPerPageOptions={[5,10]}
       />
     </div>
   );
