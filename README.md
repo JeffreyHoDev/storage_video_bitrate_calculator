@@ -11,12 +11,14 @@ User can selects the resolution of video recording, frame rate of video, and dur
 
 Furthermore, user can also view the sample with frame selected to see and feel the effect. There is also a mini wall for end user to compare different resolution videos.
 
+User can save their configurations and apply them later, to improve user experiences while using the application
+
 ## Limitations
 --
 
 ## Future Plan
-1. Add the save button for user to save configurations to local storage, improve user experience
+1. Add the save button for user to save configurations to local storage, improve user experience - Completed 17th March 2023
 2. Sharing features via email
 
 ## Date
-10th March 2023
+17th March 2023
